@@ -1,0 +1,46 @@
+h1 {
+    color: red;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+h5 {
+    text-align: right;
+}
+
+.card {
+    margin: 0 auto;
+    width: 80%;
+    background: gray;
+    box-shadow: 5px 5px 2px black;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    color: yellow;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+hr {
+    width: 97%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+textarea {
+    margin-left: 50px;
+}
+
+button {
+    margin-left: 50px;
+    border-radius: 5px;
+    text-align: center;
+    border: solid 1px transparent;
+    padding: 0.5em 1em;
+    color: #ffffff;
+    background-color: #9555af;
+    box-shadow: 2px 2px 2px black;
+}

@@ -1,0 +1,16 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px 0;
+    background: coral;
+}
+
+li {
+    display: inline-block;
+}
+
+li a {
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
