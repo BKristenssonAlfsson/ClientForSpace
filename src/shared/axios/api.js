@@ -33,7 +33,7 @@ function createJsonObject(image) {
   }
 
 export default {
-    getDailyImage: () => instance.get('planetary/apod?' + NASA_KEY + "&date=2019-08-25").then((response) => {
+    getDailyImage: () => instance.get('planetary/apod?' + NASA_KEY).then((response) => {
         return response.data
     }),
 
