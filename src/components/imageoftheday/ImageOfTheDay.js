@@ -6,17 +6,21 @@ export default function ImageOfTheDay() {
     const [data, setData] = useState({data: []});
     const [status_code, setStatusCode] = useState({data: []});
     const [message, setMessage] = useState({data: String})
+    const [videoOrImage, setVideoOrImage] = useState({data: String})
 
     useEffect(() => {
         api.getDailyImage().then((response) => {
+            setVideoOrImage(response.media_type);
             setData(response);
+
         })
     }, []);
 
     async function save(data) {
 
         await api.storeImage(data).then((response) => {
-            console.log(response)
+            setStatusCode(response.status)
+            setMessage("The image has been stored.");
         })
         .catch((error) => {
             setStatusCode(error.response.status)
@@ -33,7 +37,8 @@ export default function ImageOfTheDay() {
                 <hr />
                 <h3>{data.title} - { data.date }</h3>
                 <p></p>
-                <img src={data.hdurl} />
+                {videoOrImage == 'image' && <img src={data.hdurl} />}
+                {videoOrImage == 'video' && <iframe src={data.url} width="90%" height="350px"></iframe>}
                 <hr />
                 {data.explanation}
                 <p></p>
