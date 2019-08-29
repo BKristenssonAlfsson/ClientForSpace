@@ -4,6 +4,8 @@ import api from '../../shared/axios/api';
 
 export default function ImageOfTheDay() {
     const [data, setData] = useState({data: []});
+    const [status_code, setStatusCode] = useState({data: []});
+    const [message, setMessage] = useState({data: String})
 
     useEffect(() => {
         api.getDailyImage().then((response) => {
@@ -11,10 +13,18 @@ export default function ImageOfTheDay() {
         })
     }, []);
 
-    function save(data) {
-        const d = api.storeImage(data);
-        console.log(d);
+    async function save(data) {
+
+        await api.storeImage(data).then((response) => {
+            console.log(response)
+        })
+        .catch((error) => {
+            setStatusCode(error.response.status)
+            setMessage("This image was already in the database. No dublicates allowed!");
+        })
     }
+
+
 
     return (
         <div>
@@ -30,6 +40,7 @@ export default function ImageOfTheDay() {
                 <h5>Copyright: {data.copyright}</h5>
                 <hr />
                 <button onClick={() =>save(data)}>Save</button>
+                { status_code > 0 && <p>{status_code + " " + message}</p>}
             </div>
         </div>
     )
