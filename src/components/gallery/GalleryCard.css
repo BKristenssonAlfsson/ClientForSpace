@@ -1,0 +1,15 @@
+.thumbnail {
+    width: 300px;
+    background: hotpink;
+    display: inline-block;
+    color: yellow;
+    margin: 10px 0 0 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px black;
+    text-align: center;
+}
+
+.iframe {
+    margin: 0 0 0 0;
+}
