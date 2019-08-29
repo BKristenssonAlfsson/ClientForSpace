@@ -6,11 +6,15 @@ export default function ImageOfTheDay() {
     const [data, setData] = useState({data: []});
 
     useEffect(() => {
-        api.getAllImages().then((response) => {
-            //Remove [0] when dealing with data from internet and not local database
-            setData(response[0]);
+        api.getDailyImage().then((response) => {
+            setData(response);
         })
     }, []);
+
+    function save(data) {
+        const d = api.storeImage(data);
+        console.log(d);
+    }
 
     return (
         <div>
@@ -25,7 +29,7 @@ export default function ImageOfTheDay() {
                 <p></p>
                 <h5>Copyright: {data.copyright}</h5>
                 <hr />
-                <button>Save</button>
+                <button onClick={() =>save(data)}>Save</button>
             </div>
         </div>
     )
