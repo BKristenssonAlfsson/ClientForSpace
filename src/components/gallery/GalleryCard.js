@@ -7,8 +7,8 @@ const GalleryCard = props => (
         props.data.map( card => (
             <div className="thumbnail" key={card.id}>
             <p>{card.title}</p>
-            {card.media_type == 'image' && <img src={card.hdurl} />}
-            {card.media_type == 'video' && <iframe className="iframe" width="70%" src={card.url}></iframe>}
+            {card.media_type === 'image' && <img alt="" src={card.hdurl} />}
+            {card.media_type === 'video' && <iframe className="iframe" title="space" width="70%" src={card.url}></iframe>}
             </div>
             ))) : <p>Nothing stored in the database</p>
     }

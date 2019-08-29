@@ -12,7 +12,6 @@ export default function ImageOfTheDay() {
         api.getDailyImage().then((response) => {
             setVideoOrImage(response.media_type);
             setData(response);
-
         })
     }, []);
 
@@ -28,8 +27,6 @@ export default function ImageOfTheDay() {
         })
     }
 
-
-
     return (
         <div>
             <div className="card">
@@ -37,8 +34,8 @@ export default function ImageOfTheDay() {
                 <hr />
                 <h3>{data.title} - { data.date }</h3>
                 <p></p>
-                {videoOrImage == 'image' && <img src={data.hdurl} />}
-                {videoOrImage == 'video' && <iframe src={data.url} width="90%" height="350px"></iframe>}
+                {videoOrImage === 'image' && <img alt="" src={data.hdurl} />}
+                {videoOrImage === 'video' && <iframe src={data.url} title="Space Video" width="90%" height="350px"></iframe>}
                 <hr />
                 {data.explanation}
                 <p></p>

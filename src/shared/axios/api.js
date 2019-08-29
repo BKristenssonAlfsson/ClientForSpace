@@ -44,5 +44,13 @@ export default {
     storeImage(image) {
         var imageToPost = createJsonObject(image);
         return local_instance.post('add', imageToPost)
-    }
+    },
+
+    getMarsWeather: () => instance.get('insight_weather/?' + NASA_KEY + "&feedtype=json&ver=1.0").then((response) => {
+        return response.data
+    }),
+
+    getGeoStorms:() => instance.get('DONKI/GST?startDate=2019-01-01&endDate=2019-08-30&' + NASA_KEY).then((response) => {
+        return response.data
+    })
 }
