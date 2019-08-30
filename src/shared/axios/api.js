@@ -50,7 +50,12 @@ export default {
         return response.data
     }),
 
-    getGeoStorms:() => instance.get('DONKI/GST?startDate=2018-01-01&endDate=2019-08-30&' + NASA_KEY).then((response) => {
-        return response.data
-    })
+    getGeoStorms(start, stop){
+        console.log(start)
+        console.log(stop)
+        instance.get('DONKI/GST?startDate=' + start + '&endDate=' + stop + '&' + NASA_KEY).then((response) => {
+            console.log(response)
+            return response
+        })
+    }
 }

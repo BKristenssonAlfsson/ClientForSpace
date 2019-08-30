@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import api from '../../shared/axios/api';
 import Moment from 'react-moment';
 import './geostorm.css';
@@ -7,17 +7,16 @@ import SearchBetweenDates from '../../hooks/SearchBetweenDates';
 export default function GeoStorm() {
 
     const [data, setData] = useState({data: []});
-    const signup = () => {
-        alert(`Startdate: ${dates.startDate} Stopdate: ${dates.stopDate}`);
-    }
-/*    useEffect(() => {
-        api.getGeoStorms().then((response) => {
-            setData(response);
-        })
-    }, []);
-*/
+    
+    async function toAxios() {
+        await api.getGeoStorms(dates.startDate, dates.stopDate).then((response) => {
+            console.log(response)
+            setData(response.data);
+            })
+    };
 
-    const {dates, handleInputChange, handleSubmit} = SearchBetweenDates({startDate: '', stopDate: ''}, signup);
+
+    const {dates, handleInputChange, handleSubmit} = SearchBetweenDates({startDate: '', stopDate: ''}, toAxios);
 
     return (
         <div>

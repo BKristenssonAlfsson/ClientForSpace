@@ -5,7 +5,6 @@ const SearchBetweenDates = (initialValues, callback) => {
 
     const handleSubmit = (event) => {
         if(event) {
-            console.log(event);
             event.preventDefault();
             callback();
         }
