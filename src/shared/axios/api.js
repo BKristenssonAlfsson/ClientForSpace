@@ -51,11 +51,7 @@ export default {
     }),
 
     getGeoStorms(start, stop){
-        console.log(start)
-        console.log(stop)
-        instance.get('DONKI/GST?startDate=' + start + '&endDate=' + stop + '&' + NASA_KEY).then((response) => {
-            console.log(response)
-            return response
-        })
+        return instance.get('DONKI/GST?startDate=' + start + '&endDate=' + stop + '&' + NASA_KEY);
+        
     }
 }
