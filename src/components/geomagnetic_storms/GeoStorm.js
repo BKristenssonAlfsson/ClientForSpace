@@ -7,6 +7,7 @@ import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import Pagination from '../../shared/pagination/Pagination';
 import GeoStormModal from './GeoStormModal';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export default function GeoStorm() {
 
@@ -80,6 +81,10 @@ export default function GeoStorm() {
             })
     };
 
+    function closeGeoStormModal() {
+        setOpen(false);
+    }
+
     const {dates, handleInputChange, handleSubmit} = SearchBetweenDates({startDate: '', stopDate: ''}, toAxios);
 
     return (
@@ -108,11 +113,20 @@ export default function GeoStorm() {
                         getTdProps={onRowClick}
                         columns={columns}
                         max={25}
+                        defaultExpanded={{2:true}}
                         defaultPageSize={10}
                         className="-striped -highlight" />
                         : 'No data to show'}
             </div>
-            { open === true ? <GeoStormModal datas = { datas } /> : ''}
+            { open === true ? 
+                <TransitionGroup>
+                    <CSSTransition in={true} appear={true} timeout={600} classNames="fade">
+                        <GeoStormModal datas = { datas } close={closeGeoStormModal}/>
+                    </CSSTransition>
+                </TransitionGroup> 
+                : ''}
         </div>
     )
-}
+} 
+
+//
