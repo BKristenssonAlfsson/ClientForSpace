@@ -1,37 +1,90 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import api from '../../shared/axios/api';
 import Moment from 'react-moment';
 import './geostorm.css';
 import SearchBetweenDates from '../../hooks/SearchBetweenDates';
+import ReactTable from 'react-table';
+import "react-table/react-table.css";
+import Pagination from '../../shared/pagination/Pagination';
+import GeoStormModal from './GeoStormModal';
 
 export default function GeoStorm() {
 
     const [data, setData] = useState({data: []});
-    
+    const [datas, setDatas] = useState({datas: []});
+    const [open, setOpen] = useState({open: false });
+
+    const onRowClick = (state, rowInfo, column, instance) => {
+        return {
+            onClick: (e, handleOriginal) => {
+                setDatas(rowInfo.original);
+                setOpen(true);
+            }
+        }   
+    }
+
+    const columns = [
+        {
+            Header: 'Year',
+            accessor: 'startTime',
+            Cell : (data)=>{
+                const custom_date = data.original.startTime
+                return <Moment format="YYYY">{custom_date}</Moment>
+            },
+            headerStyle: { whiteSpace: 'unset' },
+            style: { whiteSpace: 'unset' },
+            width: 100,
+            className: "year"
+        }, 
+        {
+            Header: 'Month',
+            accessor: 'startTime',
+            Cell : (data)=>{
+                const custom_date = data.original.startTime
+                return <Moment format="MM">{custom_date}</Moment>
+            },
+            headerStyle: { whiteSpace: 'unset' },
+            style: { whiteSpace: 'unset' },
+            width: 100,
+            className: "month"
+        },
+        {
+            Header: 'Day',
+            accessor: 'startTime',
+            Cell : (data)=>{
+                const custom_date = data.original.startTime
+                return <Moment format="DD">{custom_date}</Moment>
+            },
+            headerStyle: { whiteSpace: 'unset' },
+            style: { whiteSpace: 'unset' },
+            width: 100,
+            className: "day"
+        },
+        {
+            Header: 'Time',
+            accessor: 'startTime',
+            Cell : (data)=>{
+              const custom_date = data.original.startTime
+              return <Moment format="HH:mm">{custom_date}</Moment>
+            },
+            headerStyle: { whiteSpace: 'unset' },
+            style: { whiteSpace: 'unset' },
+            width: 100,
+            className: "hour"
+        },     
+    ]
+
     async function toAxios() {
         await api.getGeoStorms(dates.startDate, dates.stopDate).then((response) => {
-            console.log(response)
             setData(response.data);
             })
     };
-
-    function splitData(data) {
-        console.log(data)
-        var size = 20;
-        var arrayOfArrays = [];
-        for ( var i = 0; i < data.length; i+=size ) {
-            arrayOfArrays.push(data.slice(i, i+size));
-        }
-        console.log(arrayOfArrays);
-    }
-
 
     const {dates, handleInputChange, handleSubmit} = SearchBetweenDates({startDate: '', stopDate: ''}, toAxios);
 
     return (
         
         <div>
-        {splitData(data)}
             <div className="searchBox">
                 <form onSubmit={handleSubmit}>
                     <label>
@@ -44,41 +97,22 @@ export default function GeoStorm() {
                         <input className="date" type="date" name="stopDate" max="2020-12-31" onChange={handleInputChange} value={dates.stopDate}  />
                     </label>
                     <p></p>
-                    <button className="submit" type="Submit">Look Up</button>
+                    <button className="lookup" type="Submit">Look Up</button>
                 </form>
             </div>
             <div className="response">
-                <table cellSpacing="10">
-                    <thead>
-                        <tr>
-                            <th>Year</th>
-                            <th>Month</th>
-                            <th>Day</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.length > 0 ? 
-                            data.map(d => (
-                                <tr key={d.gstID}>
-                                    <td key={d.gstID}>
-                                        <Moment format="YYYY">{d.startTime}</Moment>
-                                    </td>
-                                    <td align="center" key={d.gstId}>
-                                        <Moment format="MM">{d.startTime}</Moment>
-                                    </td>
-                                    <td align="center" key={d.gstId}>
-                                        <Moment format="DD">{d.startTime}</Moment>
-                                    </td>
-                                    <td key={d.gstId}>
-                                        <Moment format="HH:mm">{d.startTime}</Moment>
-                                    </td>
-                                </tr>
-                            ))   
-                        : <tr><td></td></tr>}
-                    </tbody>
-                </table>
+                {data.length > 0 ? 
+                    <ReactTable
+                        PaginationComponent={Pagination}
+                        data={data}
+                        getTdProps={onRowClick}
+                        columns={columns}
+                        max={25}
+                        defaultPageSize={10}
+                        className="-striped -highlight" />
+                        : 'No data to show'}
             </div>
+            { open === true ? <GeoStormModal datas = { datas } /> : ''}
         </div>
     )
 }

@@ -1,0 +1,11 @@
+.modalContainer {
+    margin: 0 auto;
+    background: lightgray;
+    z-index: 1;
+    width: 1000px;
+}
+
+.modalButtonMenu {
+    width: 100px;
+    border: 1px solid red;
+}

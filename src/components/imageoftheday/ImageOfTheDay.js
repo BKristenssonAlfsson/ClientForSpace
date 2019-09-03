@@ -41,7 +41,7 @@ export default function ImageOfTheDay() {
                 <p></p>
                 <h5>Copyright: {data.copyright}</h5>
                 <hr />
-                <button onClick={() =>save(data)}>Save</button>
+                <button className="save" onClick={() =>save(data)}>Save</button>
                 { status_code > 0 && <p>{status_code + " " + message}</p>}
             </div>
         </div>
