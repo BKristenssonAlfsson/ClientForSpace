@@ -12,20 +12,20 @@ export default function Header() {
     return (
         <Router>
             <div>
-                <ul>
-                    <li>
+                <ul className="headerUl">
+                    <li className="menuLink">
                         <NavLink to="/">Home</NavLink>
                     </li>
-                    <li>
+                    <li className="menuLink">
                         <NavLink to="/imageoftheday">Image Of The Day</NavLink>
                     </li>
-                    <li>
+                    <li className="menuLink">
                         <NavLink to="/gallery">Gallery</NavLink>
                     </li>
-                    <li>
+                    <li className="menuLink">
                         <NavLink to="/marsweather">Mars Weather</NavLink>
                     </li>
-                    <li>
+                    <li className="menuLink">
                         <NavLink to="/geostorm">GST</NavLink>
                     </li>
                 </ul>

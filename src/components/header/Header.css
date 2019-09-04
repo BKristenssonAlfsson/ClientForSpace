@@ -1,11 +1,11 @@
-ul {
+.headerUl {
     list-style-type: none;
     margin: 0;
     padding: 20px 0;
     background: coral;
 }
 
-li {
+.menuLink {
     display: inline-block;
 }
 

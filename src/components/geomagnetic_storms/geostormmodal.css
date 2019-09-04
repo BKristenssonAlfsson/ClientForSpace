@@ -4,7 +4,7 @@
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
     margin: 0 auto ;
     transition: all .8s;
-    width: 60%;
+    width: 90%;
 }
 
 .modal-header {
@@ -53,6 +53,7 @@
     font-weight: bold;
     outline: none;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .btn-cancel {
@@ -77,4 +78,38 @@
     margin: 15px;
     padding: 10px;
     font-weight: bold;
+}
+
+.modalrow {
+    display: table;
+    width: 100%;
+}
+
+.kpIndexes {
+    width: 70%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.linkedEvents{
+    width: 30%;
+    display: table-cell;
+}
+
+.eventID {
+    width: 100%;
+    border-bottom: 1px dotted black;
+    border-radius: 10px;
+    box-shadow: 1px 3px 3px black;
+}
+
+.observationLists {
+    list-style-type: none;
+    text-align: left;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.kpIndexChart {
+    width: 40%;
 }
