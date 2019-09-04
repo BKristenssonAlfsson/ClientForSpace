@@ -59,12 +59,12 @@ const GeoStormModal = props => {
                     </div>
                     <div className="kpIndexChart">
                         <h3>KP Index</h3>
-                        <XYPlot xType="ordinal" width={100} height={300} strokeWidth={1500}>
+                        <XYPlot xType="ordinal" width={500} height={300}>
                             <VerticalGridLines />
                             <HorizontalGridLines />
                             <XAxis />
                             <YAxis />
-                            <BarSeries data={kpIndexData} />
+                            <BarSeries data={kpIndexData} barWidth={0.5}/>
                         </XYPlot>
                     </div>
                 </div>
