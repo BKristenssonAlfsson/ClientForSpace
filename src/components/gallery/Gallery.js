@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import api from '../../shared/axios/api';
+import React from 'react';
 import GalleryCard from './GalleryCard';
+import { useSelector } from 'react-redux'
 
 export default function Gallery() {
-    const [data, setData] = useState({data: []});
 
-    useEffect(() => {
-        api.getAllImages().then((response) => {
-            setData(response);
-        })
-    }, []);
-
+    const result = useSelector(state => state);
 
     return (
         <div>
-            <GalleryCard data={data} />
+            <GalleryCard data={result.NasaReducer.images} />
         </div>
     )
 }

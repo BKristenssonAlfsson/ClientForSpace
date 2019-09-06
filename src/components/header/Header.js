@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loadAllImages } from '../../redux/actions/Actions';
 import {Route, NavLink, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './Header.css';
 import ImageOfTheDay from '../imageoftheday/ImageOfTheDay';
@@ -8,7 +10,12 @@ import MarsWeather from '../mars_weather/Mars_Weather';
 import GeoStorm from '../geomagnetic_storms/GeoStorm';
 
 export default function Header() {
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(loadAllImages());
+    }, [dispatch]);
+    
     return (
         <Router>
             <div>
