@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { loadAllImages } from '../../redux/actions/Actions';
+import { loadAllImages, getAllTodos } from '../../redux/actions/Actions';
 import {Route, NavLink, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './Header.css';
 import ImageOfTheDay from '../imageoftheday/ImageOfTheDay';
@@ -8,12 +8,14 @@ import Home from '../home/Home';
 import Gallery from '../gallery/Gallery';
 import MarsWeather from '../mars_weather/Mars_Weather';
 import GeoStorm from '../geomagnetic_storms/GeoStorm';
+import Todo from '../todo/Todo';
 
 export default function Header() {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(loadAllImages());
+        dispatch(getAllTodos());
     }, [dispatch]);
     
     return (
@@ -36,6 +38,7 @@ export default function Header() {
                         <NavLink to="/geostorm">GST</NavLink>
                     </li>
                 </ul>
+                <Todo />
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/imageoftheday" component={ImageOfTheDay}/>

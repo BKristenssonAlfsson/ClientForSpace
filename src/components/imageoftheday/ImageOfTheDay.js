@@ -30,7 +30,7 @@ export default function ImageOfTheDay() {
     return (
         <div>
             <div className="card">
-                <h1>Todays NASA image</h1>
+                <h1 className="iotdTitle">Todays NASA image</h1>
                 <hr />
                 <h3>{data.title} - { data.date }</h3>
                 <p></p>

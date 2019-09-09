@@ -5,7 +5,7 @@ import keys from './keys';
 const NASA_URL = 'https://api.nasa.gov/';
 const NASA_KEY = keys.key;
 
-const BASE_URL = 'http://127.0.0.1:5000/api/nasa/'
+const BASE_URL = 'http://127.0.0.1:5000/api/'
 
 const instance = axios.create({
     baseURL: NASA_URL,
@@ -17,7 +17,7 @@ const local_instance = axios.create({
     timeout: 1000
 });
 
-function createJsonObject(image) {
+function createImageObject(image) {
     var imageObject = {  
           date: image.date,
           explanation: image.explanation,
@@ -32,22 +32,40 @@ function createJsonObject(image) {
     return imageObject;
   }
 
+function createTodoObject(todo) {
+    var todoObject = {
+        todo: todo.todo,
+        done: todo.done
+    }
+
+    return todoObject;
+}
+
 export default {
     getDailyImage: () => instance.get('planetary/apod?' + NASA_KEY).then((response) => {
-        return response.data
+        return response.data;
     }),
 
-    getAllImages: () => local_instance.get().then((response) => {
-        return response.data
+    getAllImages: () => local_instance.get('nasa/').then((response) => {
+        return response.data;
     }),
 
     storeImage(image) {
-        var imageToPost = createJsonObject(image);
-        return local_instance.post('add', imageToPost)
+        var imageToPost = createImageObject(image);
+        return local_instance.post('nasa/add', imageToPost)
+    },
+
+    getTodos: () => local_instance.get('todo/').then((response) => {
+        return response.data;
+    }),
+
+    addTodo(todo) {
+        var postTodo = createTodoObject(todo);
+        console.log(postTodo)
     },
 
     getMarsWeather: () => instance.get('insight_weather/?' + NASA_KEY + "&feedtype=json&ver=1.0").then((response) => {
-        return response.data
+        return response.data;
     }),
 
     getGeoStorms(start, stop){
