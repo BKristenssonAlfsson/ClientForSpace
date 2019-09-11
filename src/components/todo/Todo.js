@@ -17,23 +17,25 @@ export default function Todo() {
         setStorage(JSON.parse(localStorage.getItem('storedTodos')))
     }, [])
 
-    const { handleChange, values, handleSubmit, resetForm } = useFormValidation(INITIAL_STATE);
+    const { handleChange, values, handleSubmit, resetForm, loadForm } = useFormValidation(INITIAL_STATE);
 
     function saveToLocaleStorage(data) {
 
         if (localStorage.getItem('storedTodos') === null ) {
             let temp = [];
-            data["value"] = 1;
             temp.push(data);
             localStorage.setItem('storedTodos', JSON.stringify(temp))
         } else {
             let temp = (JSON.parse(localStorage.getItem('storedTodos')));
-            let value = temp.map(el => el.value);
-            value++;
-            data["value"] = value;
+            
+            temp.forEach(element => {
+                if ( element.label === data.label ) {
+                    temp.splice(element, 1);
+                }
+            });
+
             temp.push(data);
             localStorage.setItem('storedTodos', JSON.stringify(temp));
-            console.log(JSON.parse(localStorage.getItem('storedTodos')));
             //Remove when this todo list is working"
             //localStorage.clear();
         }
@@ -44,6 +46,11 @@ export default function Todo() {
         api.addTodo(data);
     }
 
+    function selectedTodo(dataFromStorage) {
+        loadForm(dataFromStorage)
+
+    }
+
     return (
         <div className="todoForm">
             <h1 className="todoHeader">Add a new Todo</h1>
@@ -52,14 +59,14 @@ export default function Todo() {
                     <label className="todoLabel" htmlFor="todo">Todos in Localstorage</label>
                     { localStorage.getItem('storedTodos') === null ? 
                     <Select className="todoSelect" isDisabled /> :
-                    <Select className="todoSelect" options={ storage }/> }
+                    <Select className="todoSelect" options={ storage } onChange={ selectedTodo }/> }
                 </div>
                 <p></p>
                 <div>
                     <label className="todoLabel" htmlFor="label">Todo name</label>
                     <input type="text" 
                            name="label"
-                           defaultValue={values.label} 
+                           value={values.label} 
                            className="todoTitle" 
                            onChange={handleChange} />
                 </div>
@@ -70,7 +77,7 @@ export default function Todo() {
                               name="description" 
                               rows="20" 
                               cols="85"
-                              defaultValue={values.description} 
+                              value={values.description} 
                               className="todoTextarea"
                               onChange={handleChange}>
                     </textarea>

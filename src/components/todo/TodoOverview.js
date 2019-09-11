@@ -15,7 +15,6 @@ export default function TodoOverview() {
 
     return (
         <div className="page">
-            {console.log(result.TodoReducer.todos)}
             { !open ? (
                 <div className="pageButtonRow">
                     <button className="openCloseButton" 

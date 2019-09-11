@@ -21,11 +21,16 @@ const useFormValidation = (initialState) => {
         setValues(initialState)
     }
 
+    const loadForm = (data) => {
+        setValues(data)
+    }
+
     return { 
         handleChange, 
         values, 
         handleSubmit,
-        resetForm 
+        resetForm,
+        loadForm 
     }
 }
 
