@@ -15,6 +15,7 @@ export default function TodoOverview() {
 
     return (
         <div className="page">
+            {console.log(result.TodoReducer.todos)}
             { !open ? (
                 <div className="pageButtonRow">
                     <button className="openCloseButton" 
@@ -28,14 +29,14 @@ export default function TodoOverview() {
                         <div>
                             <div className="pageButtonRow">
                                 <button className="openCloseButton" 
-                                        onClick={() =>openClose()}>
+                                        onClick={() => openClose()}>
                                             <MaterialIcon icon="keyboard_arrow_up" />
                                 </button>
                             </div>
                             <h1 className="todoHeadline">Todo</h1>
                             <hr />
                             <ul className="todoList">
-                                {result.TodoReducer.todos.map(todo => <li key={todo.id}>{todo.todo}</li>)}
+                                {result.TodoReducer.todos.map(todo => <li key={todo.id}>{todo.label}</li>)}
                             </ul>
                         </div>
                     </CSSTransition>

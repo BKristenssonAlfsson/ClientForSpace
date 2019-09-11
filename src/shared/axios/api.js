@@ -34,8 +34,8 @@ function createImageObject(image) {
 
 function createTodoObject(todo) {
     var todoObject = {
-        todo: todo.todo,
-        done: todo.done
+        label: todo.label,
+        description: todo.description
     }
 
     return todoObject;
@@ -61,7 +61,7 @@ export default {
 
     addTodo(todo) {
         var postTodo = createTodoObject(todo);
-        console.log(postTodo)
+        return local_instance.post('todo/add', postTodo);
     },
 
     getMarsWeather: () => instance.get('insight_weather/?' + NASA_KEY + "&feedtype=json&ver=1.0").then((response) => {

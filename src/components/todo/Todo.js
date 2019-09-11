@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Todo.css';
 import Select from 'react-select';
 import useFormValidation from '../../hooks/FormDataHook';
+import api from '../../shared/axios/api';
 
 export default function Todo() {
 
@@ -16,7 +17,7 @@ export default function Todo() {
         setStorage(JSON.parse(localStorage.getItem('storedTodos')))
     }, [])
 
-    const { handleChange, values, handleSubmit } = useFormValidation(INITIAL_STATE);
+    const { handleChange, values, handleSubmit, resetForm } = useFormValidation(INITIAL_STATE);
 
     function saveToLocaleStorage(data) {
 
@@ -38,6 +39,10 @@ export default function Todo() {
         }
     }
 
+    function storeInDatabase(data) {
+        resetForm();
+        api.addTodo(data);
+    }
 
     return (
         <div className="todoForm">
@@ -45,7 +50,9 @@ export default function Todo() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label className="todoLabel" htmlFor="todo">Todos in Localstorage</label>
-                    <Select className="todoSelect" options={ storage }/>     
+                    { localStorage.getItem('storedTodos') === null ? 
+                    <Select className="todoSelect" isDisabled /> :
+                    <Select className="todoSelect" options={ storage }/> }
                 </div>
                 <p></p>
                 <div>
@@ -71,8 +78,8 @@ export default function Todo() {
                 <p></p>
                 <div className="todoButtonRow">
                     <button className="saveToLocaleStorageButton" type="Submit" onClick={() => saveToLocaleStorage(values)}>Store</button>
-                    <button className="clearTodoButton">Clear</button>
-                    <button className="saveToDatabaseButton">Save</button>
+                    <button className="clearTodoButton" type="reset" onClick={() => resetForm()}>Clear</button>
+                    <button className="saveToDatabaseButton" type="button" onClick={() => storeInDatabase(values)}>Save</button>
                 </div>
             </form>
         </div>

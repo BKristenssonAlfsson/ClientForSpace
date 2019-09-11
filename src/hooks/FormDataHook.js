@@ -17,7 +17,16 @@ const useFormValidation = (initialState) => {
         }));
     }
 
-    return { handleChange, values, handleSubmit }
+    const resetForm = () => {
+        setValues(initialState)
+    }
+
+    return { 
+        handleChange, 
+        values, 
+        handleSubmit,
+        resetForm 
+    }
 }
 
 export default useFormValidation;
