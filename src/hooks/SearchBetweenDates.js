@@ -12,7 +12,10 @@ const SearchBetweenDates = (initialValues, callback) => {
 
     const handleInputChange = (event) => {
         event.persist();
-        setDates(dates => ({...dates, [event.target.name]: event.target.value}));
+        setDates(dates => ({
+            ...dates, 
+            [event.target.name]: event.target.value
+        }));
     }
     
     return {

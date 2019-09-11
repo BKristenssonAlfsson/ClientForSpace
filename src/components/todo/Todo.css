@@ -1,63 +1,72 @@
-.page {
-    background-color: yellow;
-    color: black;
-    width: 10%;
-    position: absolute;
-    right: 8px;
+.todoForm {
+    margin: 0 auto;
+    width: 50%;
+    background-color: bisque;
+    box-shadow: 2px 2px 2px black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 25px;
 }
 
-.pageButtonRow {
-    width: 100%;
-    height: 31px;
+.todoHeader {
+    text-align: center;
+    font-family: cursive;
+    font-style: italic;
 }
 
-.openCloseButton {
-    position: absolute;
-    right: 0;
+.todoLabel {
+    display: inline-block;
+    font-family: cursive;
+    
+}
+
+.todoTextarea {
+    vertical-align: top;
+    resize: none;
 }
 
 .todoTitle {
+    width: 50%;
+    margin-left: 96px;
+}
+
+.todoButtonRow {
     width: 100%;
-    text-align: center;
-    font-style: italic
+    text-align: right;
 }
 
-.todos-appear {
-    max-height:50px;
-    opacity: 0;
+.saveToLocaleStorageButton {
+    margin-right: 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    color: #ffffff;
+    background-color: #9555af;
+    box-shadow: 2px 2px 2px black;
 }
 
-.todos-appear.todos-appear-active {
-    opacity: 1;
-    max-height: 1500px;
-    transition: all 6600ms ease-in-out;
+.clearTodoButton {
+    margin-right: 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    color: #ffffff;
+    background-color: red;
+    box-shadow: 2px 2px 2px black;
 }
 
-.todos-exit {
-    opacity: 1;
+.saveToDatabaseButton {
+    margin-right: 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    color: #ffffff;
+    background-color: green;
+    box-shadow: 2px 2px 2px black;
 }
 
-.todos-exit.todos-exit-active {
-    opacity: 0;
-    transition: opacity 5000ms ease-in-out;
-}
-
-.todos-exit-done {
-    opacity: 0;
-}
-
-.todos-enter.todos-enter-active {
-    opacity: 1;
-    max-height: 1500px;
-    transition: max-height 6600ms ease-in-out;
-}
-
-.todoList {
-    list-style-type: none;
-}
-
-.todoList > li {
-    margin-bottom: 10px;
-    font-family: fantasy;
-    font-style: italic;
+.todoSelect {
+    display: inline-block;
+    width: 60%;
+    margin-left: 13px;
 }

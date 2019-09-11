@@ -8,6 +8,7 @@ import Home from '../home/Home';
 import Gallery from '../gallery/Gallery';
 import MarsWeather from '../mars_weather/Mars_Weather';
 import GeoStorm from '../geomagnetic_storms/GeoStorm';
+import TodoOverview from '../todo/TodoOverview';
 import Todo from '../todo/Todo';
 
 export default function Header() {
@@ -37,14 +38,18 @@ export default function Header() {
                     <li className="menuLink">
                         <NavLink to="/geostorm">GST</NavLink>
                     </li>
+                    <li className="menuLink">
+                        <NavLink to="/todo">Todo</NavLink>
+                    </li>
                 </ul>
-                <Todo />
+                <TodoOverview />
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/imageoftheday" component={ImageOfTheDay}/>
                     <Route exact path="/gallery" component={Gallery}/>
                     <Route exact path="/marsweather" component={MarsWeather}/>
                     <Route exact path="/geostorm" component={GeoStorm}/>
+                    <Route exact path="/todo" component={Todo}/>
                 </Switch>
             </div>
         </Router>
