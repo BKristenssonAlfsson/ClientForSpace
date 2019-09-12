@@ -3,8 +3,14 @@ import './Todo.css';
 import Select from 'react-select';
 import useFormValidation from '../../hooks/FormDataHook';
 import api from '../../shared/axios/api';
+import { useDispatch } from 'react-redux';
+import { getAllTodos } from '../../redux/actions/Actions';
 
 export default function Todo() {
+
+    const dispatch = useDispatch();
+    
+    window.addEventListener('storage', onStorageEvent, false);
 
     const [storage, setStorage] = useState({data: []});
 
@@ -30,7 +36,8 @@ export default function Todo() {
             
             temp.forEach(element => {
                 if ( element.label === data.label ) {
-                    temp.splice(element, 1);
+                    var index = temp.indexOf(element);
+                    temp.splice(index, 1);
                 }
             });
 
@@ -43,12 +50,18 @@ export default function Todo() {
 
     function storeInDatabase(data) {
         resetForm();
-        api.addTodo(data);
+        api.addTodo(data).then(() => {
+            dispatch(getAllTodos());
+        });
     }
 
     function selectedTodo(dataFromStorage) {
         loadForm(dataFromStorage)
+    }
 
+    function onStorageEvent(storageEvent) {
+        console.log(storageEvent);
+        alert("Something happened inside storage")
     }
 
     return (
