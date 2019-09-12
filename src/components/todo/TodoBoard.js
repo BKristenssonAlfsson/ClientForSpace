@@ -31,7 +31,6 @@ export default function TodoBoard() {
 
     return (
         <div className="todoContainer">
-            {console.log(data)}
             { data.length > 0 ?
                 <ReactTable 
                     data={data}
