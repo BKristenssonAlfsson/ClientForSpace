@@ -10,6 +10,7 @@ import MarsWeather from '../mars_weather/Mars_Weather';
 import GeoStorm from '../geomagnetic_storms/GeoStorm';
 import TodoOverview from '../todo/TodoOverview';
 import Todo from '../todo/Todo';
+import TodoBoard from '../todo/TodoBoard';
 
 export default function Header() {
     const dispatch = useDispatch();
@@ -41,6 +42,9 @@ export default function Header() {
                     <li className="menuLink">
                         <NavLink to="/todo">Todo</NavLink>
                     </li>
+                    <li className="menuLink">
+                        <NavLink to="/todoboard">TodoBoard</NavLink>
+                    </li>
                 </ul>
                 <TodoOverview />
                 <Switch>
@@ -50,6 +54,7 @@ export default function Header() {
                     <Route exact path="/marsweather" component={MarsWeather}/>
                     <Route exact path="/geostorm" component={GeoStorm}/>
                     <Route exact path="/todo" component={Todo}/>
+                    <Route exakt path="/todoboard" component={TodoBoard}/>
                 </Switch>
             </div>
         </Router>

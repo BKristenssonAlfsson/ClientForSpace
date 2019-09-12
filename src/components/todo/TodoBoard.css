@@ -1,0 +1,13 @@
+.todoContainer {
+    margin: 40px auto 0;
+    width: 80%;
+    background-color: yellow;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px black;
+    padding: 10px 0;
+}
+
+.todoTable {
+    margin: 10px auto;
+
+}
