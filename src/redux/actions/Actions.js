@@ -4,11 +4,19 @@ import api from '../../shared/axios/api';
 export const FETCH_ALL_IMAGES = 'FETCH_ALL_IMAGES';
 export const START_FETCH = 'START_FETCH';
 export const FETCH_ALL_TODOS = 'FETCH_ALL_TODOS';
+export const GET_CSRF_TOKEN = 'GET_CSRF_TOKEN';
 
 const startFetch = () => {
     return {
         type: START_FETCH,
         payload: null
+    }
+}
+
+const getCsrfToken = (data) => {
+    return {
+        type: GET_CSRF_TOKEN,
+        payload: data
     }
 }
 
@@ -25,6 +33,19 @@ const fetchedTodos = (data) => {
         payload: data
     }
 }
+
+export const retrieveCsrfToken = (data) => {
+    return async (dispatch) => {
+        try {
+            await api.getCsrfToken(data).then((response) =>{
+                dispatch(getCsrfToken(response))
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
 
 export const loadAllImages = () => {
     return async (dispatch) => {

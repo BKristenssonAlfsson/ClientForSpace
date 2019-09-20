@@ -1,21 +1,38 @@
-import axios from 'axios'
+import axios from 'axios';
 //In keys.js is unique keys to different REST API. Most of them are for free, so apply for them.
 import keys from './keys';
+import headers from './headers';
 
 const NASA_URL = 'https://api.nasa.gov/';
 const NASA_KEY = keys.key;
+const BASE_URL_TODO = 'http://127.0.0.1:5000/api/';
+const BASE_URL_NASA = 'http://127.0.0.1:8080/';
 
-const BASE_URL = 'http://127.0.0.1:5000/api/'
-
-const instance = axios.create({
+const nasa_instance = axios.create({
     baseURL: NASA_URL,
     timeout: 5000
 });
 
-const local_instance = axios.create({
-    baseURL: BASE_URL,
+const python_instance = axios.create({
+    baseURL: BASE_URL_TODO,
     timeout: 1000
 });
+
+const space_microservice_instance = axios.create({
+    baseURL: BASE_URL_NASA,
+    timeout: 5000
+});
+
+space_microservice_instance.interceptors.request.use(request => {
+   
+    
+    return request;
+})
+
+space_microservice_instance.interceptors.response.use(response => {
+    console.log(response)
+    return response;
+})
 
 function createImageObject(image) {
     var imageObject = {  
@@ -42,34 +59,37 @@ function createTodoObject(todo) {
 }
 
 export default {
-    getDailyImage: () => instance.get('planetary/apod?' + NASA_KEY).then((response) => {
+    getDailyImage: () => nasa_instance.get('planetary/apod?' + NASA_KEY).then((response) => {
         return response.data;
     }),
 
-    getAllImages: () => local_instance.get('nasa/').then((response) => {
+    getAllImages: () => space_microservice_instance.get('iotd/', {headers}).then((response) => {
         return response.data;
     }),
 
     storeImage(image) {
         var imageToPost = createImageObject(image);
-        return local_instance.post('nasa/add', imageToPost)
+        return space_microservice_instance.post('iotd/store/', imageToPost, {headers})
     },
 
-    getTodos: () => local_instance.get('todo/').then((response) => {
+    getTodos: () => python_instance.get('todo/').then((response) => {
         return response.data;
     }),
 
     addTodo(todo) {
         var postTodo = createTodoObject(todo);
-        return local_instance.post('todo/add', postTodo);
+        return python_instance.post('todo/add', postTodo);
     },
 
-    getMarsWeather: () => instance.get('insight_weather/?' + NASA_KEY + "&feedtype=json&ver=1.0").then((response) => {
+    getMarsWeather: () => nasa_instance.get('insight_weather/?' + NASA_KEY + "&feedtype=json&ver=1.0").then((response) => {
         return response.data;
     }),
 
     getGeoStorms(start, stop){
-        return instance.get('DONKI/GST?startDate=' + start + '&endDate=' + stop + '&' + NASA_KEY);
-        
+        return nasa_instance.get('DONKI/GST?startDate=' + start + '&endDate=' + stop + '&' + NASA_KEY);   
+    },
+
+    getCsrfToken(credentials) {
+        return space_microservice_instance.post("login/adduser", credentials, {headers});
     }
 }

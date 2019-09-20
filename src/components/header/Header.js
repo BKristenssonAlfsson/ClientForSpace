@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { loadAllImages, getAllTodos } from '../../redux/actions/Actions';
+import { loadAllImages, getAllTodos, retrieveCsrfToken } from '../../redux/actions/Actions';
 import {Route, NavLink, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './Header.css';
 import ImageOfTheDay from '../imageoftheday/ImageOfTheDay';
@@ -11,11 +11,13 @@ import GeoStorm from '../geomagnetic_storms/GeoStorm';
 import TodoOverview from '../todo/TodoOverview';
 import Todo from '../todo/Todo';
 import TodoBoard from '../todo/TodoBoard';
+import Login from '../login/Login';
 
 export default function Header() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(retrieveCsrfToken());
         dispatch(loadAllImages());
         dispatch(getAllTodos());
     }, [dispatch]);
@@ -45,6 +47,9 @@ export default function Header() {
                     <li className="menuLink">
                         <NavLink to="/todoboard">TodoBoard</NavLink>
                     </li>
+                    <li className="menuLink">
+                        <NavLink to="/login">Login</NavLink>
+                    </li>
                 </ul>
                 <TodoOverview />
                 <Switch>
@@ -55,6 +60,7 @@ export default function Header() {
                     <Route exact path="/geostorm" component={GeoStorm}/>
                     <Route exact path="/todo" component={Todo}/>
                     <Route exakt path="/todoboard" component={TodoBoard}/>
+                    <Route exakt path="/login" component={Login}/>
                 </Switch>
             </div>
         </Router>

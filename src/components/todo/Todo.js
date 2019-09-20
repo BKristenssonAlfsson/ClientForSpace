@@ -16,7 +16,7 @@ export default function Todo() {
 
     const INITIAL_STATE= ({ 
         label: '', 
-        description: ''
+        desbcription: ''
     })
 
     useEffect(() => {
