@@ -26,7 +26,9 @@ const space_microservice_instance = axios.create({
 });
 
 space_microservice_instance.interceptors.request.use(request => {
-    request.headers['Authorization'] = authToken;
+    if (authToken !== null) {
+        request.headers['Authorization'] = authToken;
+    } 
     return request;
 })
 
