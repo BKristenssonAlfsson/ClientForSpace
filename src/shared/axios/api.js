@@ -74,7 +74,14 @@ export default {
 
     storeImage(image) {
         var imageToPost = createImageObject(image);
-        return space_microservice_instance.post('iotd/store/', imageToPost, {headers})
+        if (authToken === null){
+            var promise = new Promise(function(resolve, reject) {
+                resolve("Not logged in");
+            })
+            return promise;
+        } else {
+            return space_microservice_instance.post('iotd/store/', imageToPost, {headers})
+        }
     },
 
     getTodos: () => python_instance.get('todo/').then((response) => {

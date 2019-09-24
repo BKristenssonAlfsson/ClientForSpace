@@ -19,8 +19,12 @@ export default function ImageOfTheDay() {
     async function save(data) {
 
         await api.storeImage(data).then((response) => {
-            setStatusCode(response.status)
-            setMessage("The image has been stored.");
+            if (response === "Not logged in") {
+                alert("You are not logged in")
+            } else {
+                setStatusCode(response.status)
+                setMessage("The image has been stored.");
+            }
         })
         .catch((error) => {
             setStatusCode(error.response.status)
