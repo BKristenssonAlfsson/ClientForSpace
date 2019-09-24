@@ -8,6 +8,7 @@ export default function ImageOfTheDay() {
     const [message, setMessage] = useState({data: String})
     const [videoOrImage, setVideoOrImage] = useState({data: String})
 
+
     useEffect(() => {
         api.getDailyImage().then((response) => {
             setVideoOrImage(response.media_type);

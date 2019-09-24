@@ -37,10 +37,11 @@ const fetchedTodos = (data) => {
 export const retrieveCsrfToken = (data) => {
     return async (dispatch) => {
         try {
-            await api.getCsrfToken(data).then((response) =>{
-                dispatch(getCsrfToken(response))
-            }).then((res) => {
-                dispatch(loadAllImages())
+            await api.getCsrfToken(data).then((res) => {
+                dispatch(getCsrfToken(res))
+                api.authToken(res.headers.authorization)
+                }).then(() => {
+                    dispatch(loadAllImages())
             })
         } catch (error) {
             console.log(error);

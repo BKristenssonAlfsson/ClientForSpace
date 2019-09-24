@@ -6,7 +6,7 @@
     border-radius: 25px;
     display: inline-block;
     position: fixed;
-    margin-top: 10px;
+    margin-top: 40px;
     box-shadow: 2px 2px 20px silver;
     z-index: -1 !important;
 }
@@ -23,7 +23,7 @@
     position: fixed;
     width: 27%;
     padding: 10px 10px;
-    margin: 10px 0 0 260px;
+    margin: 40px 0 0 260px;
     box-shadow: 5px 5px 5px silver;
     border-radius: 25px;
     z-index: -1 !important;

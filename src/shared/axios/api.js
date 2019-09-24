@@ -3,6 +3,8 @@ import axios from 'axios';
 import keys from './keys';
 import headers from './headers';
 
+var authToken = null;
+
 const NASA_URL = 'https://api.nasa.gov/';
 const NASA_KEY = keys.key;
 const BASE_URL_TODO = 'http://127.0.0.1:5000/api/';
@@ -24,12 +26,11 @@ const space_microservice_instance = axios.create({
 });
 
 space_microservice_instance.interceptors.request.use(request => {
-    request.headers.authorization = localStorage.getItem("token")
+    request.headers['Authorization'] = authToken;
     return request;
 })
 
 space_microservice_instance.interceptors.response.use(response => {
-    localStorage.setItem("token", response.headers.authorization)
     return response;
 })
 
@@ -58,11 +59,16 @@ function createTodoObject(todo) {
 }
 
 export default {
+    authToken: (token) => {
+        authToken = token;
+    },
+
     getDailyImage: () => nasa_instance.get('planetary/apod?' + NASA_KEY).then((response) => {
         return response.data;
     }),
 
     getAllImages: () => space_microservice_instance.get('iotd/', {headers}).then((response) => {
+
         return response.data;
     }),
 

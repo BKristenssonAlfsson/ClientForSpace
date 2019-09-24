@@ -11,8 +11,8 @@ h5 {
 }
 
 .card {
-    margin: 0 auto;
-    width: 80%;
+    margin: 60px auto;
+    width: 70%;
     background: gray;
     box-shadow: 5px 5px 2px black;
     border-radius: 10px;

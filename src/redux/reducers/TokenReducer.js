@@ -1,7 +1,7 @@
 import * as ACTIONS from '../actions/Actions';
 
 export const initialState = {
-	tokens: []
+	token: String
 };
 
 
@@ -11,7 +11,7 @@ export const TokenReducer = (state = initialState, action) => {
 		case ACTIONS.GET_CSRF_TOKEN:
 			return {
 				...state,
-				tokens: "We got connection"
+				token: action.payload.headers.authorization
 			}
 		default:
 			return state;
