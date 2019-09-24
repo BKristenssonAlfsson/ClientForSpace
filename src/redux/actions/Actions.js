@@ -39,6 +39,8 @@ export const retrieveCsrfToken = (data) => {
         try {
             await api.getCsrfToken(data).then((response) =>{
                 dispatch(getCsrfToken(response))
+            }).then((res) => {
+                dispatch(loadAllImages())
             })
         } catch (error) {
             console.log(error);

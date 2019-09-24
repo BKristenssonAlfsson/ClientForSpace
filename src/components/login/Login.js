@@ -3,6 +3,7 @@ import './Login.css';
 import useFormValidation from '../../hooks/FormDataHook';
 import {retrieveCsrfToken} from '../../redux/actions/Actions'
 import { useDispatch } from 'react-redux';
+import api from '../../shared/axios/api';
 
 export default function Login() {
 
@@ -17,8 +18,12 @@ export default function Login() {
     
     function storeInDatabase(data) {
         resetForm();
-        console.log(data);
-        dispatch(retrieveCsrfToken(data));
+        api.addUser(data);
+
+    }
+
+    function login(values) {
+        dispatch(retrieveCsrfToken(values));
     }
 
     return (
@@ -39,6 +44,7 @@ export default function Login() {
                        value={values.password}/>
                 <p></p>
                 <button className="saveToDatabaseButton" type="button" onClick={() => storeInDatabase(values)}>Save</button>
+                <button className="saveToDatabaseButton" type="button" onClick={() => login(values)}>Login</button>
             </form>
         </div>
     )

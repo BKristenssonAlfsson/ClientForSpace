@@ -1,68 +1,36 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { loadAllImages, getAllTodos, retrieveCsrfToken } from '../../redux/actions/Actions';
-import {Route, NavLink, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { getAllTodos } from '../../redux/actions/Actions';
+import { useRoutes, A } from 'hookrouter';
 import './Header.css';
-import ImageOfTheDay from '../imageoftheday/ImageOfTheDay';
-import Home from '../home/Home';
-import Gallery from '../gallery/Gallery';
-import MarsWeather from '../mars_weather/Mars_Weather';
-import GeoStorm from '../geomagnetic_storms/GeoStorm';
+import {routes } from './routes';
 import TodoOverview from '../todo/TodoOverview';
-import Todo from '../todo/Todo';
-import TodoBoard from '../todo/TodoBoard';
-import Login from '../login/Login';
 
-export default function Header() {
+const Header = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(retrieveCsrfToken());
-        dispatch(loadAllImages());
         dispatch(getAllTodos());
     }, [dispatch]);
-    
+
+    const routeResult = useRoutes(routes);
+
     return (
-        <Router>
-            <div>
-                <ul className="headerUl">
-                    <li className="menuLink">
-                        <NavLink to="/">Home</NavLink>
-                    </li>
-                    <li className="menuLink">
-                        <NavLink to="/imageoftheday">Image Of The Day</NavLink>
-                    </li>
-                    <li className="menuLink">
-                        <NavLink to="/gallery">Gallery</NavLink>
-                    </li>
-                    <li className="menuLink">
-                        <NavLink to="/marsweather">Mars Weather</NavLink>
-                    </li>
-                    <li className="menuLink">
-                        <NavLink to="/geostorm">GST</NavLink>
-                    </li>
-                    <li className="menuLink">
-                        <NavLink to="/todo">Todo</NavLink>
-                    </li>
-                    <li className="menuLink">
-                        <NavLink to="/todoboard">TodoBoard</NavLink>
-                    </li>
-                    <li className="menuLink">
-                        <NavLink to="/login">Login</NavLink>
-                    </li>
-                </ul>
-                <TodoOverview />
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/imageoftheday" component={ImageOfTheDay}/>
-                    <Route exact path="/gallery" component={Gallery}/>
-                    <Route exact path="/marsweather" component={MarsWeather}/>
-                    <Route exact path="/geostorm" component={GeoStorm}/>
-                    <Route exact path="/todo" component={Todo}/>
-                    <Route exakt path="/todoboard" component={TodoBoard}/>
-                    <Route exakt path="/login" component={Login}/>
-                </Switch>
-            </div>
-        </Router>
+        <div>
+        <div className="headerMenu">
+            <A href="/">Home</A>
+            <A href="/imageoftheday">Image Of The Day</A>
+            <A href="/login">Login</A>
+            <A href="/gallery">Gallery</A>
+            <A href="/todo">Add Todo</A>
+            <A href="/todoboard">All Todos</A>
+            <A href="/geostorm">GeoStorms</A>
+            <A href="/marsweather">Mars Weather</A>
+            <TodoOverview />
+            {routeResult}
+        </div>
+        </div>
     )
 }
+
+export default Header;

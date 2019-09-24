@@ -15,7 +15,7 @@ const nasa_instance = axios.create({
 
 const python_instance = axios.create({
     baseURL: BASE_URL_TODO,
-    timeout: 1000
+    timeout: 5000
 });
 
 const space_microservice_instance = axios.create({
@@ -24,13 +24,12 @@ const space_microservice_instance = axios.create({
 });
 
 space_microservice_instance.interceptors.request.use(request => {
-   
-    
+    request.headers.authorization = localStorage.getItem("token")
     return request;
 })
 
 space_microservice_instance.interceptors.response.use(response => {
-    console.log(response)
+    localStorage.setItem("token", response.headers.authorization)
     return response;
 })
 
@@ -90,6 +89,10 @@ export default {
     },
 
     getCsrfToken(credentials) {
-        return space_microservice_instance.post("login/adduser", credentials, {headers});
+        return space_microservice_instance.post("login", credentials, {headers});
+    },
+
+    addUser(data) {
+        return space_microservice_instance.post("login/adduser", data, {headers});
     }
 }
