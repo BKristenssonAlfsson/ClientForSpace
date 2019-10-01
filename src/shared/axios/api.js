@@ -70,7 +70,6 @@ export default {
     }),
 
     getAllImages: () => space_microservice_instance.get('iotd/', {headers}).then((response) => {
-
         return response.data;
     }),
 

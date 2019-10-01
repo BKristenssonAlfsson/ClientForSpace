@@ -1,24 +1,35 @@
 A {
+    display: block;
     padding:10px;
     border: 3px solid hotpink;
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 1px 10px 15px black;
     margin: 10px;
     border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: aliceblue;
     font-style: italic;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
+    font-family: 'Pacifico';
     font-weight: bold;
+    background-image: linear-gradient(to bottom right, red, yellow);
 }
 
 A:hover {
-    box-shadow: 0 0 15px green;
+    box-shadow: 0 0 25px orangered;
 }
 
-.headerMenu {
-    height: 30px;
-    margin: 0 auto;
+.dashboard {
     border-radius: 10px;
-    background: yellow;
-    box-shadow: 2px 2px 2px black;
-    width: 100%;
+    background: black;
+    width: 15%;
     padding: 15px;
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.top {
+    width: 100%;
+    background: black;
+    display: flex;
+    padding: 1rem 0;
 }

@@ -16,21 +16,20 @@ const Header = () => {
     const routeResult = useRoutes(routes);
 
     return (
-        <div>
-        <div className="headerMenu">
-            <A href="/">Home</A>
-            <A href="/imageoftheday">Image Of The Day</A>
-            <A href="/login">Login</A>
-            <A href="/gallery">Gallery</A>
-            <A href="/todo">Add Todo</A>
-            <A href="/todoboard">All Todos</A>
-            <A href="/geostorm">GeoStorms</A>
-            <A href="/marsweather">Mars Weather</A>
-            <TodoOverview />
+        <div className="top">
+            <div className="dashboard">
+                <A href="/">Home</A>
+                <A href="/imageoftheday">Image Of The Day</A>
+                <A href="/login">Login</A>
+                <A href="/gallery">Gallery</A>
+                <A href="/todo">Add Todo</A>
+                <A href="/todoboard">All Todos</A>
+                <A href="/geostorm">GeoStorms</A>
+                <A href="/marsweather">Mars Weather</A>       
+            </div>   
             {routeResult}
-        </div>
         </div>
     )
 }
-
+//<TodoOverview />
 export default Header;
