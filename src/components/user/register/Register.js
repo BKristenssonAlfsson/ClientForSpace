@@ -1,14 +1,10 @@
 import React from 'react';
-import './Login.css';
-import useFormValidation from '../../hooks/FormDataHook';
-import {retrieveCsrfToken} from '../../redux/actions/Actions'
-import { useDispatch } from 'react-redux';
-import api from '../../shared/axios/api';
+import './Register.css';
+import useFormValidation from '../../../hooks/FormDataHook';
+import api from '../../../shared/axios/api';
 
-export default function Login() {
+export default function Register() {
 
-    const dispatch = useDispatch();
-    
     const INITIAL_STATE= ({ 
         username: '', 
         password: ''
@@ -21,14 +17,9 @@ export default function Login() {
         api.addUser(data);
 
     }
-
-    function login(values) {
-        dispatch(retrieveCsrfToken(values));
-    }
-
     return (
         <div>
-            <form className="loginForm" onSubmit={handleSubmit}>
+                        <form className="loginForm" onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input type="text" 
                        name="username"
@@ -44,8 +35,7 @@ export default function Login() {
                        value={values.password}/>
                 <p></p>
                 <button className="saveToDatabaseButton" type="button" onClick={() => storeInDatabase(values)}>Save</button>
-                <button className="saveToDatabaseButton" type="button" onClick={() => login(values)}>Login</button>
-            </form>
+                </form>
         </div>
     )
 }
