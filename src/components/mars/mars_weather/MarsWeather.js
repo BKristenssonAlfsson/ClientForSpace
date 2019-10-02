@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import api from '../../shared/axios/api';
+import api from '../../../shared/axios/api';
 
-export default function Mars_Weather() {
+export default function MarsWeather() {
     const [data, setData] = useState({data: []});
 
     useEffect(() => {
