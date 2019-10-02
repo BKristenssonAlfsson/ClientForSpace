@@ -7,8 +7,7 @@
     display: inline-block;
     position: fixed;
     margin-top: 40px;
-    box-shadow: 2px 2px 20px silver;
-    z-index: -1 !important;
+    box-shadow: 0 0 10px silver;
 }
 
 .date {
@@ -24,9 +23,10 @@
     width: 27%;
     padding: 10px 10px;
     margin: 40px 0 0 260px;
-    box-shadow: 5px 5px 5px silver;
+    box-shadow: 0 0 10px silver;
+    color: white;
     border-radius: 25px;
-    z-index: -1 !important;
+    z-index: 0;
 }
 
 .year .month .day .hour {
@@ -65,7 +65,7 @@
 
 .fade-appear.fade-appear-active {
     opacity: 1;
-    transition: opacity 300ms linear;
+    transition: opacity 2300ms linear;
 }
 
 .fade-exit {
@@ -74,7 +74,7 @@
 
 .fade-exit.fade-exit-active {
     opacity: 0;
-    transition: opacity 300ms linear;
+    transition: opacity 2300ms linear;
 }
 
 .fade-exit-done {
@@ -87,6 +87,5 @@
 
 .fade-enter.fade-enter-active {
     opacity: 1;
-    transition: opacity300ms linear;
+    transition: opacity 2300ms linear;
 }
-

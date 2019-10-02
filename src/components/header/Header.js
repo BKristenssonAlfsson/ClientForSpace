@@ -19,9 +19,8 @@ const Header = () => {
         <div className="top">
             <div className="dashboard">
                 <A href="/">Home</A>
-                <A href="/imageoftheday">Image Of The Day</A>
+                <A href="/nasa">Nasa</A>
                 <A href="/login">Login</A>
-                <A href="/gallery">Gallery</A>
                 <A href="/todo">Add Todo</A>
                 <A href="/todoboard">All Todos</A>
                 <A href="/geostorm">GeoStorms</A>

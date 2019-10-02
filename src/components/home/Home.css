@@ -1,8 +1,8 @@
 .solarsystem {
     color: whitesmoke;
     height: 700px;
-    width: auto;
-    border: 1px solid green;
+    width: 100%;
+    padding: 20px;
 }
 
 .infoRow {
@@ -26,9 +26,7 @@
     width: 50%;
     padding: 3rem;
     text-align: center;
-    font-style: italic;
-    font-family: 'Pacifico';
-    font-weight: bold;
+    font: italic bold 20px 'Pacifico';
     display: inline-block;
 }
 
@@ -38,4 +36,174 @@
     display: inline-block;
     padding: 3rem;
     border: 1px solid brown;
+}
+
+.neptunelane {
+    width: 700px;
+    height: 700px;
+    background: transparent;
+    border: 1px solid red;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.uranuslane {
+    width: 600px;
+    height: 600px;
+    background: transparent;
+    border: 1px solid yellow;
+    border-radius: 50%;
+    margin: 50px auto;
+}
+
+.saturnlane {
+    width: 500px;
+    height: 500px;
+    background: transparent;
+    border: 1px solid green;
+    border-radius: 50%;
+    margin: 50px auto;
+}
+
+.jupiterlane {
+    width: 400px;
+    height: 400px;
+    background: transparent;
+    border: 1px solid navy;
+    border-radius: 50%;
+    margin: 50px auto;
+}
+
+.marslane {
+    width: 300px;
+    height: 300px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+    margin: 50px auto;
+}
+
+.earthlane {
+    width: 200px;
+    height: 200px;
+    background: transparent;
+    border: 1px solid brown;
+    border-radius: 50%;
+    margin: 50px auto;
+}
+
+.venuslane {
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border: 1px solid olive;
+    border-radius: 50%;
+    margin: 50px auto;
+}
+
+.mercurylane {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+    margin: 25px auto;
+}
+
+.sun {
+    width: 20px;
+    height: 20px;
+    background: yellow;
+    border-radius: 50%;
+    margin: 15px auto;
+}
+
+.neptune {
+    position: absolute;
+    top: 226px;
+    left: 650px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.uranus {
+    position: absolute;
+    top: 255px;
+    left: 700px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.saturn {
+    position: absolute;
+    top: 278px;
+    left: 800px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.jupiter {
+    position: absolute;
+    top: 337px;
+    left: 900px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.jupiter {
+    position: absolute;
+    top: 337px;
+    left: 900px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.mars {
+    position: absolute;
+    top: 410px;
+    left: 740px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.earth {
+    position: absolute;
+    top: 470px;
+    left: 917px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.venus {
+    position: absolute;
+    top: 578px;
+    left: 840px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.mercury {
+    position: absolute;
+    top: 537px;
+    left: 859px;
+    background: whitesmoke;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
 }
