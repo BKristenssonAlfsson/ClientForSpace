@@ -48,7 +48,11 @@ A:hover {
     display: inline-block;
     padding: 3rem;
     color: orangered;
-    width: 5%;
+    width: 7%;
+}
+
+span {
+    vertical-align: top
 }
 
 .titlearea {

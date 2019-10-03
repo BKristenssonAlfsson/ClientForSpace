@@ -20,13 +20,14 @@ const Header = () => {
         <div className="top">
             <div className="infoRow">
                 <div className="todoNews">
-                    Todo News
+                    News about what? <br /> 
+                    Space launches?
                 </div>
                 <div className="titlearea">
                     SPACE CONTROLLER
                 </div>
                 <div className="news">
-                    <Person />{loginDetails.username["username"]}
+                    <Person /><span>{loginDetails.username["username"]}</span>
                 </div>
             </div>
             <div className="break"></div>
