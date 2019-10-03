@@ -1,0 +1,9 @@
+.marsbody {
+    width: 80%;
+    display: flex;
+}
+
+.marssubmenu {
+    width: 15%;
+    padding-top: 13px;
+}

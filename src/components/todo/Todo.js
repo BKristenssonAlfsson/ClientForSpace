@@ -10,7 +10,7 @@ export default function Todo() {
 
     return (
         <div className="todobody">
-            <div classname="tododashboard">
+            <div className="tododashboard">
                 <A href="/todo/addtodo">Add Todo</A>
                 <A href="/todo/todoboard">Todo Board</A>
             </div>

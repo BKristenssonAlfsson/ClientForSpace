@@ -85,11 +85,11 @@ export default function AddTodo() {
                 </div>
                 <p></p>
                 <div>
-                    <label className="todoLabel" htmlFor="description">Todo description</label>
+                    <label className="todoLabel description" htmlFor="description">Todo description</label>
                     <textarea type="text" 
                               name="description" 
                               rows="20" 
-                              cols="85"
+                              cols="80"
                               value={values.description} 
                               className="todoTextarea"
                               onChange={handleChange}>

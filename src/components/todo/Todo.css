@@ -1,8 +1,9 @@
 .todobody {
-    width: 100%;
+    width: 80%;
     display: flex;
 }
 
 .tododashboard {
+    padding-top: 13px;
     width: 15%;
 }

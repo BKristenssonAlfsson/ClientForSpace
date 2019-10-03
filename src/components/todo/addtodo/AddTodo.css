@@ -17,7 +17,11 @@
 .todoLabel {
     display: inline-block;
     font-family: cursive;
-    
+}
+
+.description {
+    width: 100%;
+    text-align: center;
 }
 
 .todoTextarea {

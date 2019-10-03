@@ -16,6 +16,18 @@ const Header = () => {
 
     return (
         <div className="top">
+            <div className="infoRow">
+                <div className="todoNews">
+                    Todo News
+                </div>
+                <div className="titlearea">
+                    SPACE CONTROLLER
+                </div>
+                <div className="news">
+                    News
+                </div>
+            </div>
+            <div className="break"></div>
             <div className="dashboard">
                 <A href="/">Home</A>
                 <A href="/user">User</A>
@@ -23,7 +35,7 @@ const Header = () => {
                 <A href="/mars">Mars</A>       
                 <A href="/todo">Todo</A>
                 <A href="/geostorm">GeoStorms</A>
-            </div>   
+            </div>  
             {routeResult}
         </div>
     )

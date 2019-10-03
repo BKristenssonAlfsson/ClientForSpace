@@ -5,39 +5,6 @@
     padding: 20px;
 }
 
-.infoRow {
-    width: 1000px;
-    color: orange;
-    display: inline-block;
-}
-
-.news {
-    display: inline-block;
-    padding: 3rem;
-    color: orangered;
-    border: 1px solid yellow;
-    width: 10%;
-}
-
-.titlearea {
-    color:orchid;
-    border: 1px solid blue;
-    margin: 0 auto;
-    width: 50%;
-    padding: 3rem;
-    text-align: center;
-    font: italic bold 20px 'Pacifico';
-    display: inline-block;
-}
-
-.todoNews {
-    margin-left: 15px;
-    color:olivedrab;
-    display: inline-block;
-    padding: 3rem;
-    border: 1px solid brown;
-}
-
 .neptunelane {
     width: 700px;
     height: 700px;

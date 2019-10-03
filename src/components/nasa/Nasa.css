@@ -1,8 +1,9 @@
 .nasabody {
-    width: 100%;
+    width: 80%;
     display: flex;
 }
 
 .submenu {
+    padding-top: 13px;
     width: 15%;
 }
