@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './imageoftheday.css';
-import api from '../../shared/axios/api';
+import api from '../../../shared/axios/api';
 
 export default function ImageOfTheDay() {
     const [data, setData] = useState({data: []});

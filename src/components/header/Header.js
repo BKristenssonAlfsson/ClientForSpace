@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllTodos } from '../../redux/actions/Actions';
 import { useRoutes, A } from 'hookrouter';
 import './Header.css';
 import {routes } from './routes';
+import Person from '@material-ui/icons/Person';
 
 const Header = () => {
     const dispatch = useDispatch();
+    const loginDetails = useSelector(state => state.TokenReducer)
 
     useEffect(() => {
         dispatch(getAllTodos());
@@ -24,7 +26,7 @@ const Header = () => {
                     SPACE CONTROLLER
                 </div>
                 <div className="news">
-                    News
+                    <Person />{loginDetails.username["username"]}
                 </div>
             </div>
             <div className="break"></div>
