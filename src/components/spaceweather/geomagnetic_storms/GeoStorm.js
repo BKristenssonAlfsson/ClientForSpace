@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import api from '../../shared/axios/api';
+import api from '../../../shared/axios/api';
 import Moment from 'react-moment';
 import './geostorm.css';
-import SearchBetweenDates from '../../hooks/SearchBetweenDates';
+import SearchBetweenDates from '../../../hooks/SearchBetweenDates';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
-import Pagination from '../../shared/pagination/Pagination';
+import Pagination from '../../../shared/pagination/Pagination';
 import GeoStormModal from './GeoStormModal';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 

@@ -37,7 +37,7 @@ const Header = () => {
                 <A href="/nasa">Nasa</A>
                 <A href="/mars">Mars</A>       
                 <A href="/todo">Todo</A>
-                <A href="/geostorm">GeoStorms</A>
+                <A href="/spaceweather">Space Weather</A>
             </div>  
             {routeResult}
         </div>

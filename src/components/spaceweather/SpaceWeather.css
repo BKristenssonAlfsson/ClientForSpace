@@ -1,0 +1,9 @@
+.spaceweatherbody {
+    width: 80%;
+    display: flex;
+}
+
+.spaceweatherdashboard {
+    padding-top: 13px;
+    width: 15%;
+}
